@@ -1,0 +1,4 @@
+# cargo build artefacts
+/target
+# nix build artefacts
+/result
