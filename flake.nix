@@ -41,7 +41,20 @@
                   ''cargo $cargo_options clippy -Dwarnings''
                 ];
 
-              override = prev: prev // { nativeBuildInputs = prev.nativeBuildInputs ++ [ pkgs.clippy ]; };
+              override = prev: prev // {
+                # LIBCLANG_PATH = "${pkgs.llvmPackages.libclang.lib}/lib";
+
+                # preBuild = ''export BINDGEN_EXTRA_CLANG_ARGS=${bindgenExtraClangArgs}'';
+
+                buildInputs = [
+                  pkgs.rustPlatform.bindgenHook
+                ];
+
+                nativeBuildInputs = prev.nativeBuildInputs ++ (with pkgs; [
+                  clippy
+                  ruby
+                ]);
+              };
             };
           in
           naersk'.buildPackage (defaultArgs // args);
@@ -66,6 +79,10 @@
             ${preCommitHook.shellHook}
           '';
 
+          buildInputs = [
+            pkgs.rustPlatform.bindgenHook
+          ];
+
           nativeBuildInputs = with pkgs; [
             rustc
             cargo
@@ -73,6 +90,8 @@
             clippy
             rust-analyzer
             rustfmt
+
+            ruby
           ];
         };
 
