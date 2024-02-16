@@ -17,7 +17,7 @@ jobs:
 
     steps:
     - name: Checkout repo
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Rebase on trunk
       if: ${{ !contains(github.ref, 'trunk') }}
