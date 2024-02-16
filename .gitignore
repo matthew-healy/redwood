@@ -2,3 +2,5 @@
 /target
 # nix build artefacts
 /result
+# local pre-commit config
+.pre-commit-config.yaml
