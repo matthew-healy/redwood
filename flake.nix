@@ -38,7 +38,7 @@
               cargoTestCommands = prev:
                 prev
                 ++ [
-                  ''cargo $cargo_options clippy -Dwarnings''
+                  ''cargo $cargo_options clippy -- -Dwarnings''
                 ];
 
               override = prev: prev // {
