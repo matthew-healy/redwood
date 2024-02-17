@@ -783,6 +783,7 @@ name = "redwood"
 version = "0.1.0"
 dependencies = [
  "cedar-policy",
+ "cedar-policy-validator",
  "magnus",
 ]
 

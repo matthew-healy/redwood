@@ -8,4 +8,5 @@ crate-type = ["cdylib"]
 
 [dependencies]
 cedar-policy = "3.0"
+cedar-policy-validator = "3.0"
 magnus = "0.6"
