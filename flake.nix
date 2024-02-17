@@ -30,7 +30,11 @@
 
         naersk' = pkgs.callPackage naersk { };
 
-        mkRedwood = args:
+        # currently just build the rust lib. have tried to package the gem
+        # but i can't get bundle install to work - i suspect the gemspec isn't
+        # being copied into the nix store but also i have no idea what i'm
+        # doing so who knows.
+        buildRedwood = args:
           let
             defaultArgs = {
               src = ./.;
@@ -42,10 +46,6 @@
                 ];
 
               override = prev: prev // {
-                # LIBCLANG_PATH = "${pkgs.llvmPackages.libclang.lib}/lib";
-
-                # preBuild = ''export BINDGEN_EXTRA_CLANG_ARGS=${bindgenExtraClangArgs}'';
-
                 buildInputs = [
                   pkgs.rustPlatform.bindgenHook
                 ];
@@ -68,11 +68,7 @@
         };
       in
       {
-        packages = rec {
-          redwood = mkRedwood { };
-
-          default = redwood;
-        };
+        apps.default = buildRedwood { };
 
         devShells.default = pkgs.mkShell {
           shellHook = ''
@@ -96,11 +92,6 @@
         };
 
         formatter = pkgs.nixpkgs-fmt;
-
-        checks = {
-          redwood = mkRedwood { doCheck = true; };
-          pre-commit = preCommitHook;
-        };
       }
     );
 }

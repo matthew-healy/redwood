@@ -1,11 +1,3 @@
-[package]
-name = "redwood"
-version = "0.1.0"
-edition = "2021"
-
-[lib]
-crate-type = ["cdylib"]
-
-[dependencies]
-cedar-policy = "3.0"
-magnus = "0.6"
+[workspace]
+members = ["ext/redwood"]
+resolver = "2"

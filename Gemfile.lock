@@ -1,0 +1,27 @@
+PATH
+  remote: .
+  specs:
+    redwood (0.1.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    power_assert (2.0.3)
+    rake (13.1.0)
+    rake-compiler (1.2.7)
+      rake
+    rb_sys (0.9.88)
+    test-unit (3.6.2)
+      power_assert
+
+PLATFORMS
+  x86_64-linux
+
+DEPENDENCIES
+  rake-compiler (~> 1.2)
+  rb_sys (~> 0.9)
+  redwood!
+  test-unit (~> 3.5)
+
+BUNDLED WITH
+   2.3.26

@@ -1,6 +1,14 @@
 # cargo build artefacts
-/target
+target
+ext/redwood/target
 # nix build artefacts
-/result
+result
+# bundler artefacts
+.bundle/
+*.gem
+lib/redwood/redwood.bundle
+lib/redwood/redwood.so
 # local pre-commit config
 .pre-commit-config.yaml
+
+tmp/
